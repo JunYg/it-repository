@@ -81,6 +81,7 @@
   - reduce
   - aggregate
   - windowedBy
+    - suppress
 - groupByKey
 - process
 - processValue
@@ -109,6 +110,6 @@
 - Tumbling time window，固定大小，无重叠，连续的
 - Hopping time window，固定大小，重叠
 - Sliding time window，固定大小
-- Session window，动态大小
+- Session window，动态大小，无重叠，数据驱动
 
 ## KTable & GlobalTable
