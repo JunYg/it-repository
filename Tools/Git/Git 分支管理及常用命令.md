@@ -141,9 +141,9 @@ Git 帮助文档地址：
 
 ### **`reset`**
 
-- git reset --soft:保留工作目录和暂存区的修改,只更改HEAD指向。
-- git reset --hard:恢复工作目录和暂存区到指定提交,丢弃之后的所有提交。
-- git reset --mixed(默认):保留工作目录的修改,恢复暂存区到指定提交。
+- `git reset --soft`：保留工作目录和暂存区的修改，只更改HEAD指向。
+- `git reset --hard`：恢复工作目录和暂存区到指定提交，丢弃之后的所有提交。
+- `git reset --mixed`（默认）：保留工作目录的修改，恢复暂存区到指定提交。
 
 ### **`restore`**
 
