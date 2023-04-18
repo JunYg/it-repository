@@ -16,7 +16,7 @@ Git 帮助文档地址：
 
 <image src="https://upload-images.jianshu.io/upload_images/3670077-b97c6a8e14d1dafa.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp" style="width: 600px;"/>
 
-### 工作区 working
+### 工作区 `working`
 
 工作区，当前工作的区域。
 
@@ -24,7 +24,7 @@ Git 帮助文档地址：
 
 工作区的内容会包含提交到暂存区和版本库（当前提交点）的内容，同时也包含自己的修改内容。
 
-### 暂存区 staging（索引区 index）
+### 暂存区 `staging`（索引区 `index`）
 
 是我们把修改提交版本库前的一个过渡阶段。
 
@@ -34,7 +34,7 @@ Git 帮助文档地址：
 
 `git add` 命令将工作区内容添加到暂存区。
 
-### 本地仓库 local
+### 本地仓库 `local`
 
 版本控制系统的仓库，存在于本地。
 
@@ -50,7 +50,7 @@ Git 帮助文档地址：
 
 使用`fech` 获取时，并未合并到本地仓库，此时可使用`git merge` 实现远程仓库副本与本地仓库的合并。
 
-### 远程仓库 remote
+### 远程仓库 `remote`
 
 远程版本库与本地仓库概念基本一致，不同之处在于存在远程，可用于远程协作。
 
@@ -68,11 +68,11 @@ Git 帮助文档地址：
 
 ### 分支介绍
 
-- master，主分支；
-- hotfixes，线上 `bug` 修复分支，**分支命名：`fix_{bug 序号}`**；
-- release，用于 `uat`；
-- develop，开发依赖分支，不可以直接做代码修改，只能通过 `feature` 分支提交 `MR`，并用于测试；
-- feature，功能开发分支，**分支命名：`feat_{版本}_{功能}[_{子功能}]`**；
+- `master`，主分支；
+- `hotfixes`，线上 `bug` 修复分支，**分支命名：`fix_{bug 序号}`**；
+- `release`，用于 `uat`；
+- `develop`，开发依赖分支，不可以直接做代码修改，只能通过 `feature` 分支提交 `MR`，并用于测试；
+- `feature`，功能开发分支，**分支命名：`feat_{版本}_{功能}[_{子功能}]`**；
 
 ### 分支管理简化
 
@@ -111,46 +111,46 @@ Git 帮助文档地址：
 
 ## 常用命令
 
-### clone
+### `clone`
 
-### init
+### `init`
 
-### fetch
+### `fetch`
 
-### pull
+### `pull`
 
-### push
+### `push`
 
-### branch
+### `branch`
 
-### switch
+### `switch`
 
-### checkout
+### `checkout`
 
-### add
+### `add`
 
-### commit
+### `commit`
 
-### merge
+### `merge`
 
-### rebase
+### `rebase`
 
 > 变基
 
-### cherry-pick
+### `cherry-pick`
 
-### reset
+### `reset`
 
     - git reset --soft:保留工作目录和暂存区的修改,只更改HEAD指向。
     - git reset --hard:恢复工作目录和暂存区到指定提交,丢弃之后的所有提交。
     - git reset --mixed(默认):保留工作目录的修改,恢复暂存区到指定提交。
 
-### restore
+### `restore`
 
     还原指定文件到某个提交时的状态。它会直接更改工作目录和暂存区,不会创建提交。
 
-### revert
+### `revert`
 
     生成一个新的反向提交(commit)来撤销指定提交。它不会修改提交历史,之后提交的修改都会被保留。
 
-### log
+### `log`
