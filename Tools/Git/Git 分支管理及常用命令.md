@@ -76,7 +76,7 @@ Git 帮助文档地址：
 
 ### 分支管理简化
 
-<image src="./git.jpg" style="width: 1000px;"/>
+<image src="./Git 分支管理.jpg" style="width: 1000px;"/>
 
 **功能开发流程：**
 
