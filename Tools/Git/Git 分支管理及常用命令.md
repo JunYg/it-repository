@@ -111,46 +111,46 @@ Git 帮助文档地址：
 
 ## 常用命令
 
-### `clone`
+### **`clone`**
 
-### `init`
+### **`init`**
 
-### `fetch`
+### **`fetch`**
 
-### `pull`
+### **`pull`**
 
-### `push`
+### **`push`**
 
-### `branch`
+### **`branch`**
 
-### `switch`
+### **`switch`**
 
-### `checkout`
+### **`checkout`**
 
-### `add`
+### **`add`**
 
-### `commit`
+### **`commit`**
 
-### `merge`
+### **`merge`**
 
-### `rebase`
+### **`rebase`**
 
 > 变基
 
-### `cherry-pick`
+### **`cherry-pick`**
 
-### `reset`
+### **`reset`**
 
-    - git reset --soft:保留工作目录和暂存区的修改,只更改HEAD指向。
-    - git reset --hard:恢复工作目录和暂存区到指定提交,丢弃之后的所有提交。
-    - git reset --mixed(默认):保留工作目录的修改,恢复暂存区到指定提交。
+- git reset --soft:保留工作目录和暂存区的修改,只更改HEAD指向。
+- git reset --hard:恢复工作目录和暂存区到指定提交,丢弃之后的所有提交。
+- git reset --mixed(默认):保留工作目录的修改,恢复暂存区到指定提交。
 
-### `restore`
+### **`restore`**
 
-    还原指定文件到某个提交时的状态。它会直接更改工作目录和暂存区,不会创建提交。
+还原指定文件到某个提交时的状态。它会直接更改工作目录和暂存区,不会创建提交。
 
-### `revert`
+### **`revert`**
 
-    生成一个新的反向提交(commit)来撤销指定提交。它不会修改提交历史,之后提交的修改都会被保留。
+生成一个新的反向提交（`commit`）来撤销指定提交。它不会修改提交历史,之后提交的修改都会被保留。
 
-### `log`
+### **`log`**
