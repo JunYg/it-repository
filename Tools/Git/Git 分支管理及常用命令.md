@@ -12,7 +12,7 @@
 
 [Git 动画教程](https://learngitbranching.js.org/)
 
-## Git 架构
+## `Git` 架构
 
 <image src="https://upload-images.jianshu.io/upload_images/3670077-b97c6a8e14d1dafa.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp" style="width: 600px;"/>
 
