@@ -4,13 +4,13 @@
 
 `Git` 帮助文档地址：
 
-- [Pro Git](https://git-scm.com/book/en/v2) / [中文](https://git-scm.com/book/zh/v2)
-- [Git 指令文档](https://git-scm.com/docs)
-- windows：`file:///{git install dir}/mingw64/share/doc/git-doc/`
+- [`Pro Git`](https://git-scm.com/book/en/v2) / [中文](https://git-scm.com/book/zh/v2)
+- [`Git` 指令文档](https://git-scm.com/docs)
+- `windows`：`file:///{git install dir}/mingw64/share/doc/git-doc/`
   - `--help` 直接跳转
-- linux： `git [command] --help`
+- `linux`： `git [command] --help`
 
-[Git 动画教程](https://learngitbranching.js.org/)
+[`Git` 动画教程](https://learngitbranching.js.org/)
 
 ## `Git` 架构
 
