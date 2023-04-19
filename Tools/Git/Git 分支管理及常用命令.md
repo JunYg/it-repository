@@ -113,31 +113,33 @@ Git 帮助文档地址：
 
 ### **`clone`**
 
-### **`init`**
+### **`init`** 初始化 `.git`
 
-### **`fetch`**
+### **`status`** 
 
-### **`pull`**
+### **`fetch`** 从远程下载最新的对象和索引
 
-### **`push`**
+### **`pull`** 从远程拉取代码到本地仓库
 
-### **`branch`**
+### **`push`** 推送到远程
 
-### **`switch`**
+### **`branch`** 分支管理
 
-### **`checkout`**
+### **`switch`** 切换分支
 
-### **`add`**
+### **`checkout`** 切换分支或恢复工作区文件
 
-### **`commit`**
+### **`add`** 添加文件到暂存区
 
-### **`merge`**
+### **`commit`** 将暂存区文件提交到本地仓库
 
-### **`rebase`**
+### **`merge`** 分支合并
+
+### **`rebase`** 变基
 
 > 变基
 
-### **`cherry-pick`**
+### **`cherry-pick`** 检出提交记录
 
 ### **`reset`**
 
@@ -153,4 +155,115 @@ Git 帮助文档地址：
 
 生成一个新的反向提交（`commit`）来撤销指定提交。它不会修改提交历史,之后提交的修改都会被保留。
 
-### **`log`**
+### **`log`** 查看提交日志
+
+## Git 原理
+
+[官方文档](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E5%BA%95%E5%B1%82%E5%91%BD%E4%BB%A4%E4%B8%8E%E4%B8%8A%E5%B1%82%E5%91%BD%E4%BB%A4)
+
+### .git 目录
+
+```shell
+$ ls -al
+total 13
+-rw-r--r-- 1 RH 197121  24 Apr 19 08:56 HEAD
+-rw-r--r-- 1 RH 197121 301 Apr 19 08:56 config
+-rw-r--r-- 1 RH 197121  73 Apr 19 08:56 description
+drwxr-xr-x 1 RH 197121   0 Apr 19 08:56 hooks/
+-rw-r--r-- 1 RH 197121 137 Apr 19 08:56 index
+drwxr-xr-x 1 RH 197121   0 Apr 19 08:56 info/
+drwxr-xr-x 1 RH 197121   0 Apr 19 08:56 logs/
+drwxr-xr-x 1 RH 197121   0 Apr 19 08:56 objects/
+-rw-r--r-- 1 RH 197121 183 Apr 19 08:56 packed-refs
+drwxr-xr-x 1 RH 197121   0 Apr 19 08:56 refs/
+```
+
+- **`objects`** 目录存储所有数据内容；
+- **`refs`** 目录存储指向数据（分支、远程仓库和标签等）的提交对象的指针；
+- **`HEAD`** 文件指向目前被检出的分支；
+- **`index`** 文件保存暂存区信息；
+- `config` 文件包含项目特有的配置选项；
+- `info` 目录包含一个全局性排除（`global exclude`）文件， 用以放置那些不希望被记录在 `.gitignore` 文件中的忽略模式（`ignored patterns`）；
+- `hooks` 目录包含客户端或服务端的钩子脚本（`hook scripts`）；
+
+### `Git` 对象
+
+存储在 `.git/objects` 下。
+
+[官方文档](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-Git-%E5%AF%B9%E8%B1%A1)
+
+**上层命令：**
+
+- `git add`
+- `git commit`
+
+#### `blob` 数据对象
+
+- `git cat-file`：查看对象。
+  - `git cat-file -p master^{tree}`，查看项目当前最新的树对象。
+  - `100644`：普通文件；
+  - `100755`：可执行文件；
+  - `120000`：符号链接；
+
+#### `tree` 树对象
+
+- `git write-tree`：从当前书树对象创建树对象。
+- `git read-tree`：读取树信息到索引。
+
+#### `commit` 提交对象
+
+- `git commit-tree`: 创建一个提交对象。
+
+#### `tag` 标签对象
+
+标签对象通常指向一个提交对象，而不是一个树对象。
+
+一个永不移动的分支引用——永远指向同一个提交对象。
+
+### `Git` 引用
+
+存储在 `.git/refs` 下。
+
+[官方文档](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-Git-%E5%BC%95%E7%94%A8)
+
+上层命令：
+
+- `git branch`
+
+底层命令：
+
+- `git update-ref`，更新引用
+- `git symbolic-ref`，符号引用
+- `git show-ref`，本地仓库索引列表
+
+#### `HEAD` 引用
+
+存储在 `.git/HEAD` 与 `.git/refs/heads/`。
+
+- `.git/HEAD`，当前 `HEAD` 应用。
+- `.git/refs/heads/`，个分支引用。
+
+#### 标签应用
+
+存储在 `.git/refs/tags/`
+
+- 轻量标签
+  - `git update-ref refs/tags/{annotation}`
+- 附注标签
+  - `git tag`
+
+#### 远程引用
+
+存储在 `.git/refs/remotes/`。
+
+只读。
+
+### 包文件
+
+[官方文档](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E5%8C%85%E6%96%87%E4%BB%B6)
+
+## 常见问题
+
+1. 代码冲突解决。
+
+1. 代码回滚。
