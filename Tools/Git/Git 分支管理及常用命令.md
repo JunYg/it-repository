@@ -101,7 +101,7 @@ Git 帮助文档地址：
 
 > **最佳实践建议：**
 >
-> 1. 使用权限控制，防止普通的开发人员修改 `master/develop` 等敏感分支；
+> 1. 使用权限控制，防止开发人员修改 `master/develop` 等敏感分支以及直接对敏感分支合共代码；
 > 1. 不要在客户端进行代码的 `merge`，代码开发人员通过 `web` 端提交 `MR`，项目负责人代码审查之后进行合并；
 > 1. 每个 `MR` 只允许一个 `commit`，如果要对已经提交的代码进行修改可以使用 `commit --amend` 和 `push -f` 进行代码提交，这样保证每个开发分支对应一个功能。后期如果做 `cherry-pick` 更方便，代码审查更高效；
 > 1. 新的 `MR` 要详细记录本次合并请求涉及的需求功能，便于项目负责人代码审查和把握项目进度；
@@ -114,7 +114,9 @@ Git 帮助文档地址：
 
 ### **`init`** 初始化 `.git`
 
-### **`status`**
+### **`status`** 查看当前状态
+
+常用 `git status` 可以帮助开发人员更好的使用 `git`，可以通过 `git status` 快速了解下一步该做什么。
 
 ### **`fetch`** 从远程下载最新的对象和索引
 
@@ -269,7 +271,7 @@ drwxr-xr-x 1 RH 197121   0 Apr 19 08:56 refs/
 
     1. `git fetch`
     1. `git pull develop`
-    1. `git rebase -i develop`，交互进行合并选择
+    1. `git rebase -i develop`，`-i` 交互进行合并选择
     1. 解决冲突文件
     1. `git add .`
     1. `git rebase --continue`
