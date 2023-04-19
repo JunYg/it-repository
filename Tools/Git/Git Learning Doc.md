@@ -74,7 +74,7 @@
 
 #### 分支管理简化
 
-<image src="./Git 分支管理.jpg" style="width: 1000px;"/>
+<image src="./Git branch management.jpg" style="width: 1000px;"/>
 
 **功能开发流程：**
 
