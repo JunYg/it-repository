@@ -56,17 +56,15 @@ Git 帮助文档地址：
 
 通过`push/pull`可实现本地与远程的交互；
 
-## `Git` 原理
-
-### `Git` 应用
+## `Git` 应用
 
 [官方文档](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-Git-%E5%BC%95%E7%94%A8)
 
-## 分支管理
+### 分支管理
 
 <image src="https://ask.qcloudimg.com/http-save/yehe-7650548/0svb8qf6v4.png?" style="width: 700px;"/>
 
-### 分支介绍
+#### 分支介绍
 
 - `master`，主分支；
 - `hotfixes`，线上 `bug` 修复分支，**分支命名：`fix_{bug 序号}`**；
@@ -74,7 +72,7 @@ Git 帮助文档地址：
 - `develop`，开发依赖分支，不可以直接做代码修改，只能通过 `feature` 分支提交 `MR`，并用于测试；
 - `feature`，功能开发分支，**分支命名：`feat_{版本}_{功能}[_{子功能}]`**；
 
-### 分支管理简化
+#### 分支管理简化
 
 <image src="./Git 分支管理.jpg" style="width: 1000px;"/>
 
@@ -89,8 +87,8 @@ Git 帮助文档地址：
 1. `UAT` 测试产生的 `bug`，从 `release` 分支 `checkout` 修复分支做 `bug` 修复，然后 `MR` 到 `release` 分支；
 1. `UAT` 完成，合并代码到 `master` 分支，打 `tag` 用于历史版本的备份；
 1. 运维人员发布最新的 `master` 分支（或者是根据 `tag` 进行发布）；
-1. 如果 `UAT` 有代码更新，则 `rebase` 最新的 `master` 分支到 `develop`；
-1. 开发中分支 `rebase` 最新的 `develop`，合并已经修复或已经开发完的功能；
+1. 如果 `UAT` 有代码更新，则项目负责人 `rebase` 最新的 `master` 分支到 `develop`；
+1. 开发人员将开发分支 `rebase` 最新的 `develop`，合并已经修复或已经开发完的功能；
 
 **线上 `bug` 修复流程：**
 
@@ -116,7 +114,7 @@ Git 帮助文档地址：
 
 ### **`init`** 初始化 `.git`
 
-### **`status`** 
+### **`status`**
 
 ### **`fetch`** 从远程下载最新的对象和索引
 
