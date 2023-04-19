@@ -148,11 +148,11 @@ Git 帮助文档地址：
 - `git reset --hard`：恢复工作目录和暂存区到指定提交，丢弃之后的所有提交。
 - `git reset --mixed`（默认）：保留工作目录的修改，恢复暂存区到指定提交。
 
-### **`restore`**
+### **`restore`** 恢复工作区文件树
 
 还原指定文件到某个提交时的状态。它会直接更改工作目录和暂存区,不会创建提交。
 
-### **`revert`**
+### **`revert`** 
 
 生成一个新的反向提交（`commit`）来撤销指定提交。它不会修改提交历史,之后提交的修改都会被保留。
 
@@ -263,8 +263,74 @@ drwxr-xr-x 1 RH 197121   0 Apr 19 08:56 refs/
 
 [官方文档](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-%E5%8C%85%E6%96%87%E4%BB%B6)
 
+`git gc`，对仓库进行重新打包以节省空间。
+
 ## 常见问题
 
-1. 代码冲突解决。
+1. `git rebase` 如何把开发分支变基到最新的开发提交。
 
-1. 代码回滚。
+    1. `git fetch`
+    1. `git pull develop`
+    1. `git rebase -i develop`，交互进行合并选择
+    1. 解决冲突文件
+    1. `git add .`
+    1. `git rebase --continue`
+    1. `git commit --amend`，提交变更，`--amend` 是对上次提交进行修补不会产生额外的 `commit log`
+    1. `git push -f`，强制推送，因为上一步 `--amend` ，处于安全考虑无法直接推送，需要 `-f` 强制推送
+
+    ```shell
+    # Commands:
+    # p, pick <commit> = use commit 保留该提交(默认命令)
+    # r, reword <commit> = use commit, but edit the commit message 保留该提交,但我需要修改提交信息
+    # e, edit <commit> = use commit, but stop for amending 保留该提交,但我需要停下来修改该提交(不仅仅修改信息) 
+    # s, squash <commit> = use commit, but meld into previous commit 将该提交和前一个提交合并
+    # f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+    #                    commit's log message, unless -C is used, in which case
+    #                    keep only this commit's message; -c is same as -C but
+    #                    opens the editor 将该提交和前一个提交合并,但我只想保留前一个提交的信息
+    # x, exec <command> = run command (the rest of the line) using shell 在该提交上执行一些 shell 命令
+    # b, break = stop here (continue rebase later with 'git rebase --continue')
+    # d, drop <commit> = remove commit 我要丢弃该提交
+    # l, label <label> = label current HEAD with a name
+    # t, reset <label> = reset HEAD to a label
+    # m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+    #         create a merge commit using the original merge commit's
+    #         message (or the oneline, if no original merge commit was
+    #         specified); use -c <commit> to reword the commit message
+    # u, update-ref <ref> = track a placeholder for the <ref> to be updated
+    #                       to this position in the new commits. The <ref> is
+    #                       updated at the end of the rebase
+    ```
+
+    ![rebase -i](./Git%20rebase.png)
+
+1. `merge/rebase` 代码冲突解决。
+
+    ```shell
+    <<<<<<< HEAD
+    second commit
+    =======
+    first commit
+    >>>>>>> 5874284a836e0ca3336dcf1f97ec191373a76313
+    ```
+
+    - `<<<<<<< HEAD` 与 `=======` 之间的是本地代码变更
+    - `=======` 与 `>>>>>>> {ref no}` 之间是来自合并代码变更
+
+1. 代码撤销。
+    1. 工作区代码撤销
+
+        `git restore <file>...`
+
+    1. 暂存区（索引区）代码撤销
+
+        `git restore --staged <file>...`
+
+    1. 本地仓库撤销
+
+        `git reset [--soft | --mixed [-N] | --hard | --merge | --keep] [-q] [<commit>]`
+
+    1. 远程仓库撤销
+
+        1. `git revert`，会保留一个提交记录。
+        1. `git reset`，移动 `HEAD` 引用，不会保留提交记录。
