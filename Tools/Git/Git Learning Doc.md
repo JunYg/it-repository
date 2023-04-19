@@ -1,4 +1,4 @@
-# `Git` 架构、分支管理及常用命令
+# Git Learning Doc
 
 `Git`，分布式版本控制系统
 
@@ -14,7 +14,7 @@
 
 ## `Git` 架构
 
-<image src="https://upload-images.jianshu.io/upload_images/3670077-b97c6a8e14d1dafa.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp" style="width: 600px;"/>
+![`Git` 架构](./Git%20constructor.jpg)
 
 ### 工作区 `working`
 
@@ -62,7 +62,7 @@
 
 ### 分支管理
 
-<image src="https://ask.qcloudimg.com/http-save/yehe-7650548/0svb8qf6v4.png?" style="width: 700px;"/>
+![分支管理](./Git%20branch.png)
 
 #### 常用分支介绍
 
@@ -74,7 +74,7 @@
 
 #### 分支管理简化
 
-<image src="./Git branch management.jpg" style="width: 1000px;"/>
+![分支管理简化](./Git%20branch%20management.jpg)
 
 **功能开发流程：**
 
@@ -93,7 +93,7 @@
 **线上 `bug` 修复流程：**
 
 1. 测试或产品提交线上 `bug`；
-1. 开发人员认领 `bug`，从 `mater` `checkout` 出 `fix_{bug 序号}` 分支修复。
+1. 开发人员认领 `bug`，从 `mater` `checkout` 出 `fix_{bug 序号}` 分支修复；
 1. 测试人员测试确认后，`bug` 修复人员提交 `MR` 合并 `master`；
 1. 项目负责人审核代码后，打 `tag`;
 1. 运维人员发布最新的 `master` 分支（或者是根据 `tag` 进行发布）；
@@ -202,30 +202,30 @@ drwxr-xr-x 1 RH 197121   0 Apr 19 08:56 refs/
 
 #### `blob` 数据对象
 
-- `git cat-file`：查看对象。
-  - `git cat-file -p master^{tree}`，查看项目当前最新的树对象。
+- `git cat-file`：查看对象；
+  - `git cat-file -p master^{tree}`，查看项目当前最新的树对象；
   - `100644`：普通文件；
   - `100755`：可执行文件；
   - `120000`：符号链接；
 
 #### `tree` 树对象
 
-- `git write-tree`：从当前书树对象创建树对象。
-- `git read-tree`：读取树信息到索引。
+- `git write-tree`：从当前书树对象创建树对象；
+- `git read-tree`：读取树信息到索引；
 
 #### `commit` 提交对象
 
-- `git commit-tree`: 创建一个提交对象。
+- `git commit-tree`: 创建一个提交对象；
 
 #### `tag` 标签对象
 
-标签对象通常指向一个提交对象，而不是一个树对象。
+标签对象通常指向一个提交对象，而不是一个树对象；
 
-一个永不移动的分支引用——永远指向同一个提交对象。
+一个永不移动的分支引用——永远指向同一个提交对象；
 
 ### `Git` 引用
 
-存储在 `.git/refs` 下。
+存储在 `.git/refs` 下；
 
 [官方文档](https://git-scm.com/book/zh/v2/Git-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86-Git-%E5%BC%95%E7%94%A8)
 
@@ -235,20 +235,20 @@ drwxr-xr-x 1 RH 197121   0 Apr 19 08:56 refs/
 
 底层命令：
 
-- `git update-ref`，更新引用
-- `git symbolic-ref`，符号引用
-- `git show-ref`，本地仓库索引列表
+- `git update-ref`，更新引用；
+- `git symbolic-ref`，符号引用；
+- `git show-ref`，本地仓库索引列表；
 
 #### `HEAD` 引用
 
-存储在 `.git/HEAD` 与 `.git/refs/heads/`。
+存储在 `.git/HEAD` 与 `.git/refs/heads/`；
 
 - `.git/HEAD`，当前 `HEAD` 应用。
 - `.git/refs/heads/`，个分支引用。
 
 #### 标签应用
 
-存储在 `.git/refs/tags/`
+存储在 `.git/refs/tags/`。
 
 - 轻量标签
   - `git update-ref refs/tags/{annotation}`
@@ -269,7 +269,7 @@ drwxr-xr-x 1 RH 197121   0 Apr 19 08:56 refs/
 
 ## 常见问题
 
-1. `git rebase` 如何把开发分支变基到最新的开发提交。
+1. `git rebase` 如何把开发分支变基到 `develop`（其他分支类似），[rebase 官方文档](https://git-scm.com/docs/git-rebase)
 
     1. `git fetch`
     1. `git pull develop`
