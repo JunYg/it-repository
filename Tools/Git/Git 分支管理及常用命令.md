@@ -1,8 +1,8 @@
-# Git 架构、分支管理及常用命令
+# `Git` 架构、分支管理及常用命令
 
-Git，分布式版本控制系统
+`Git`，分布式版本控制系统
 
-Git 帮助文档地址：
+`Git` 帮助文档地址：
 
 - [Pro Git](https://git-scm.com/book/en/v2) / [中文](https://git-scm.com/book/zh/v2)
 - [Git 指令文档](https://git-scm.com/docs)
