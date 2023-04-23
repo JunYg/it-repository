@@ -6,7 +6,7 @@
 
 基础镜像
 
-### `MAINTAINER`
+### ~~`MAINTAINER`~~
 
 `Dockerfile`  的维护者信息，姓名、邮箱等，可以在 `docker inspect` 中查看。
 
@@ -64,7 +64,7 @@ RUN <command 1> \
     && <command 2>
 ```
 
-### CMD
+### `CMD`
 
 为启动容器指定需要运行的程序，程序执行结束，容器结束。
 
@@ -82,7 +82,7 @@ CMD ['<executable file>', '<param 1>', '<param 2>', ...]
 CMD ['<param 1>', '<param 2>', ...] # 为 ENTRYPOINT 指定程序默认参数
 ```
 
-### ENTRYPOINT
+### `ENTRYPOINT`
 
 与 `CMD` 类似，但是不会被 `docker run` 命令行参数指定的指令覆盖，命令行参数会被当做参数给 `ENTRYPOINT` 指定的程序。
 
@@ -95,7 +95,7 @@ ENTRYPOINT <shell command> <param 1> <param 2> ...
 ENTRYPOINT ['<executable file>', '<param 1>', '<param 2>', ...]
 ```
 
-### ENV
+### `ENV`
 
 设置构建镜像的环境变量。
 
@@ -106,7 +106,7 @@ ENV <key> <value>
 ENV <key 1>=<value 1> <key 2>=<value 2> ...
 ```
 
-### ARG
+### `ARG`
 
 **仅**在**构建阶段**设置环境变量。
 
@@ -126,7 +126,7 @@ ARG <key>[=<default value>]
 1. 如果 `ENV` 和 `ARG` 指定了同名变量，则 `docker build` 时通过 `--build-arg` 设置的 `ARG` 值会覆盖 `ENV` 的值。
 1. 构建完成后，`ARG` 所设置的变量就会消失，不会保留在最终镜像中。
 
-### VOLUME
+### `VOLUME`
 
 定义匿名数据卷。
 
@@ -134,7 +134,7 @@ ARG <key>[=<default value>]
 
 在启动容器 `docker run` 的时候，我们可以通过 `-v` 参数修改挂载点。
 
-### EXPOSE
+### `EXPOSE`
 
 声明端口。
 
@@ -142,7 +142,7 @@ ARG <key>[=<default value>]
 
 在运行时使用随机端口映射时，也就是 `docker run -P` 时，会自动随机映射 `EXPOSE` 的端口。
 
-### WORKDIR
+### `WORKDIR`
 
 指定工作目录。
 
@@ -156,7 +156,7 @@ ARG <key>[=<default value>]
 WORKDIR <worker directory>
 ```
 
-### USER
+### `USER`
 
 用于指定执行后续命令的用户和用户组，用户和用户组必须提前已经存在。
 
@@ -164,9 +164,9 @@ WORKDIR <worker directory>
 USER <username>[:<usergroup>]
 ```
 
-### HEALTHCHECK
+### `HEALTHCHECK`
 
-### ONBUILD
+### `ONBUILD`
 
 ## 镜像构建
 
