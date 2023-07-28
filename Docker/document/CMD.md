@@ -24,9 +24,9 @@ If CMD is used to provide default arguments for the ENTRYPOINT instruction, both
 >
 > exec 格式会被解析为 JSON 数组，也就意味着你必须使用半角双引号（"）而不是半角单引号（'）。
 
-Unlike the shell form, the exec form does not invoke a command shell. This means that normal shell processing does not happen. 
-For example, CMD [ "echo", "$HOME" ] will not do variable substitution on $HOME. 
-If you want shell processing then either use the shell form or execute a shell directly, for example: CMD [ "sh", "-c", "echo $HOME" ]. 
+Unlike the shell form, the exec form does not invoke a command shell. This means that normal shell processing does not happen.
+For example, CMD [ "echo", "$HOME" ] will not do variable substitution on $HOME.
+If you want shell processing then either use the shell form or execute a shell directly, for example: CMD [ "sh", "-c", "echo $HOME" ].
 When using the exec form and executing a shell directly, as in the case for the shell form, it is the shell that is doing the environment variable expansion, not docker.
 
 不像是 shell 格式，exec 模式不会调用 shell 命令。也就意味着不会像常规的 shell 处理一样。
@@ -48,8 +48,8 @@ FROM ubuntu
 CMD echo "This is a test." | wc -
 ```
 
-If you want to run your `<command>` without a shell then you must express the command as a JSON array and give the full path to the executable. 
-This array form is the preferred format of CMD. 
+If you want to run your `<command>` without a shell then you must express the command as a JSON array and give the full path to the executable.
+This array form is the preferred format of CMD.
 Any additional parameters must be individually expressed as strings in the array:
 
 如果您想在没有 shell 的情况下运行 `<command>`，则必须将命令表示为JSON数组，并为可执行文件提供完整的路径。
