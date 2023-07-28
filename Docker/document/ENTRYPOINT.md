@@ -1,4 +1,4 @@
-# ENTRYPOINT
+# [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint)
 
 ENTRYPOINT has two forms:
 
