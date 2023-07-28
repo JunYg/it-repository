@@ -1,8 +1,4 @@
-# 文档翻译
-
-## Dockerfile 命令
-
-### [CMD](https://docs.docker.com/engine/reference/builder/#cmd)
+# [CMD](https://docs.docker.com/engine/reference/builder/#cmd)
 
 CMD 命令有三种模式:
 
