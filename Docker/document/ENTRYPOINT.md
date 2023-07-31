@@ -143,9 +143,9 @@ PID                 USER                COMMAND
 $ /usr/bin/time docker stop test
 
 test
-real	0m 0.27s
-user	0m 0.03s
-sys	    0m 0.03s
+real    0m 0.27s
+user    0m 0.03s
+sys     0m 0.03s
 ```
 
 > **Note**
@@ -185,9 +185,9 @@ Which exits cleanly on docker stop:
 $ /usr/bin/time docker stop test
 
 test
-real	0m 0.20s
-user	0m 0.02s
-sys	    0m 0.04s
+real    0m 0.20s
+user    0m 0.02s
+sys     0m 0.04s
 ```
 
 If you forget to add exec to the beginning of your ENTRYPOINT:
@@ -229,9 +229,9 @@ root         7  0.0  0.1   5884  2816 pts/1    Rs+  13:58   0:00 ps waux
 $ /usr/bin/time docker stop test
 
 test
-real	0m 10.19s
-user	0m 0.04s
-sys	    0m 0.03s
+real    0m 10.19s
+user    0m 0.04s
+sys     0m 0.03s
 ```
 
 ## [Understand how CMD and ENTRYPOINT interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)
