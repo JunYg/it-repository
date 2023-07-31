@@ -19,7 +19,7 @@ An ENTRYPOINT allows you to configure a container that will run as an executable
 For example, the following starts nginx with its default content, listening on port 80:
 
 ```shell
-$docker run -i -t --rm -p 80:80 nginx
+$ docker run -i -t --rm -p 80:80 nginx
 ```
 
 Command line arguments to `docker run <image>` will be appended after all elements in an exec form ENTRYPOINT, and will override all elements specified using CMD.
@@ -44,7 +44,7 @@ CMD ["-c"]
 When you run the container, you can see that `top` is the only process:
 
 ```shell
-$docker run -it --rm --name test  top -H
+$ docker run -it --rm --name test  top -H
 
 top - 08:25:00 up  7:27,  0 users,  load average: 0.00, 0.01, 0.05
 Threads:   1 total,   1 running,   0 sleeping,   0 stopped,   0 zombie
@@ -59,7 +59,7 @@ KiB Swap:  1441840 total,        0 used,  1441840 free.  1324440 cached Mem
 To examine the result further, you can use `docker exec`:
 
 ```shell
-$docker exec -it test ps aux
+$ docker exec -it test ps aux
 
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  2.6  0.1  19752  2352 ?        Ss+  08:24   0:00 top -b -H
@@ -123,7 +123,7 @@ echo "exited $0"
 If you run this image with `docker run -it --rm -p 80:80 --name test apache`, you can then examine the container’s processes with `docker exec`, or `docker top`, and then ask the script to stop Apache:
 
 ```shell
-$docker exec -it test ps aux
+$ docker exec -it test ps aux
 
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.1  0.0   4448   692 ?        Ss+  00:42   0:00 /bin/sh /run.sh 123 cmd cmd2
@@ -132,7 +132,7 @@ www-data    20  0.2  0.2 360468  6004 ?        Sl   00:42   0:00 /usr/sbin/apach
 www-data    21  0.2  0.2 360468  6000 ?        Sl   00:42   0:00 /usr/sbin/apache2 -k start
 root        81  0.0  0.1  15572  2140 ?        R+   00:44   0:00 ps aux
 
-$docker top test
+$ docker top test
 
 PID                 USER                COMMAND
 10035               root                {run.sh} /bin/sh /run.sh 123 cmd cmd2
@@ -140,7 +140,7 @@ PID                 USER                COMMAND
 10055               33                  /usr/sbin/apache2 -k start
 10056               33                  /usr/sbin/apache2 -k start
 
-$/usr/bin/time docker stop test
+$ /usr/bin/time docker stop test
 
 test
 real	0m 0.27s
