@@ -2,7 +2,11 @@
 
 ENTRYPOINT has two forms:
 
+ENTRYPOINT 有两种模式：
+
 The exec form, which is the preferred form:
+
+首选模式，exec 模式：
 
 ```shell
 ENTRYPOINT ["executable", "param1", "param2"]
@@ -10,30 +14,47 @@ ENTRYPOINT ["executable", "param1", "param2"]
 
 The shell form:
 
+shell 模式：
+
 ```shell
 ENTRYPOINT command param1 param2
 ```
 
 An ENTRYPOINT allows you to configure a container that will run as an executable.
 
+ENTRYPOINT 允许你配置一个可执行的容器来执行。
+
 For example, the following starts nginx with its default content, listening on port 80:
+
+例如，下面的命令启动一个默认内容的 nginx，并监听 80 端口：
 
 ```shell
 $ docker run -i -t --rm -p 80:80 nginx
 ```
 
-Command line arguments to `docker run <image>` will be appended after all elements in an exec form ENTRYPOINT, and will override all elements specified using CMD.
+Command line arguments to `docker run <image>` will be appended after all elements in an ***exec*** form `ENTRYPOINT`, and will override all elements specified using CMD.
 This allows arguments to be passed to the entry point, i.e., `docker run <image> -d` will pass the `-d` argument to the entry point.
 You can override the `ENTRYPOINT` instruction using the `docker run --entrypoint` flag.
 
-The shell form prevents any `CMD` or `run` command line arguments from being used, but has the disadvantage that your `ENTRYPOINT` will be started as a subcommand of `/bin/sh -c`, which does not pass signals.
+`docker run <image>` 的命令行参数将追加到 ***exec*** 模式 `ENTRYPOINT` 的所用参数后面，并将覆盖 `CMD` 指定的所有参数。
+这些所有的参数将传给接入点，即：`docker run <image> -d` 会将 `-d` 参数传到接入点。
+你可以使用 `docker run --entrypoint` 覆盖 `ENTRYPOINT` 指令。
+
+The ***shell*** form prevents any `CMD` or `run` command line arguments from being used, but has the disadvantage that your `ENTRYPOINT` will be started as a subcommand of `/bin/sh -c`, which does not pass signals.
 This means that the executable will not be the container’s `PID 1` - and will ***not receive*** Unix signals - so your executable will not receive a `SIGTERM` from `docker stop <container>`.
+
+***shell*** 模式会阻止使用 `CMD` 和 `run` 命令行参数，但不好的是 `ENTRYPOINT` 将作为 `/bin/sh -c` 子命令启动，则无法传递信号。
+意味着可执行命令不会作为容器的 `PID 1` 进程执行，不会收到 Unix 的信号量，你的可执行命令不会收到 `docker stop <container>` 的 `SIGTERM`（终端信号）。
 
 Only the last `ENTRYPOINT` instruction in the `Dockerfile` will have an effect.
 
+`Dockerfile` 中，只有最后的 `ENTRYPOINT` 命令有效。
+
 ## [Exec form ENTRYPOINT example](https://docs.docker.com/engine/reference/builder/#exec-form-entrypoint-example)
 
-You can use the exec form of `ENTRYPOINT` to set fairly stable default commands and arguments and then use either form of `CMD` to set additional defaults that are more likely to be changed.
+You can use the ***exec*** form of `ENTRYPOINT` to set fairly stable default commands and arguments and then use either form of `CMD` to set additional defaults that are more likely to be changed.
+
+你可以使用 `ENTRYPOINT` 的 ***exec*** 模式设置相对稳定的默认命令和参数，然后使用任何形式的 `CMD` 设置附加默认的有可能会改变的参数。
 
 ```dockerfile
 FROM ubuntu
@@ -42,6 +63,8 @@ CMD ["-c"]
 ```
 
 When you run the container, you can see that `top` is the only process:
+
+当你运行容器时，你会看到 `top` 是唯一的进程：
 
 ```shell
 $ docker run -it --rm --name test  top -H
@@ -58,6 +81,8 @@ KiB Swap:  1441840 total,        0 used,  1441840 free.  1324440 cached Mem
 
 To examine the result further, you can use `docker exec`:
 
+你可以使用 `docker exec` 进一步验证结果：
+
 ```shell
 $ docker exec -it test ps aux
 
@@ -67,6 +92,8 @@ root         7  0.0  0.1  15572  2164 ?        R+   08:25   0:00 ps aux
 ```
 
 And you can gracefully request `top` to shut down using `docker stop test`.
+
+你可以使用 `docker stop test` 优雅的请求关闭 `top`。
 
 The following `Dockerfile` shows using the `ENTRYPOINT` to run Apache in the foreground (i.e., as `PID 1`):
 
