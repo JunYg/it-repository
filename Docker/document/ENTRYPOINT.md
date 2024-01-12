@@ -6,7 +6,7 @@ ENTRYPOINT 有两种模式：
 
 The exec form, which is the preferred form:
 
-首选模式，exec 模式：
+**首选模式**，exec 模式：
 
 ```shell
 ENTRYPOINT ["executable", "param1", "param2"]

@@ -2,7 +2,7 @@
 
 CMD 命令有三种模式:
 
-- CMD ["executable","param1","param2"] (exec form, 首选模式)
+- CMD ["executable","param1","param2"] (exec form, **首选模式**)
 - CMD ["param1","param2"] (作为 ENTRYPOINT 命令默认参数)
 - CMD command param1 param2 (shell 模式)
 
