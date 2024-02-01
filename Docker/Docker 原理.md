@@ -257,3 +257,35 @@ $ unshare
 ## OCI 标准
 
 ## 引擎架构
+
+- daeman
+- containerd
+- containerd-shim
+- runc
+
+## 容器网络
+
+### 模式
+
+- NULL
+    > 创建**独立的**网络空间，但不做任何配置。用户通过 network 命令配置。
+- Host
+    > 使用主机网络空间，复用主机网络
+- Container
+    > 复用其他容器的网络
+- Bridge
+    > 使用 Linux 网络和 `iptables` 提供容器互联。
+    >
+    > Docker 会再主机创建名为 `docker0` 的网桥，通过 `veth pair` 连接主机的每个 `endpoint`。
+
+### 跨主机网络
+
+- Overlay
+    > 通过网络分包实现
+- Remote
+  - Underlay
+  - Overlay
+
+### `NULL` 模式
+
+### `Bridge` 模式
