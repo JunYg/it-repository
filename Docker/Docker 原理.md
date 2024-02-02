@@ -278,6 +278,12 @@ $ unshare
     >
     > Docker 会再主机创建名为 `docker0` 的网桥，通过 `veth pair` 连接主机的每个 `endpoint`。
 
+### `NULL` 模式
+
+### `Bridge` 模式
+
+端口映射：iptables 做网络转发
+
 ### 跨主机网络
 
 - Overlay
@@ -285,7 +291,3 @@ $ unshare
 - Remote
   - Underlay
   - Overlay
-
-### `NULL` 模式
-
-### `Bridge` 模式
