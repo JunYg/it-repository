@@ -272,7 +272,7 @@ $ unshare
 - Host
     > 使用主机网络空间，复用主机网络
 - Container
-    > 复用其他容器的网络
+    > 重用其他容器的网络
 - Bridge
     > 使用 Linux 网络和 `iptables` 提供容器互联。
     >
@@ -282,12 +282,19 @@ $ unshare
 
 ### `Bridge` 模式
 
-端口映射：iptables 做网络转发
+> **默认**
+>
+> `apt install bridge-utils -y` 安装 bridge 工具使用 `brctl` 命令
+
+端口映射：iptables 做端口转发
 
 ### 跨主机网络
 
 - Overlay
     > 通过网络分包实现
-- Remote
-  - Underlay
-  - Overlay
+    >
+    > VXLAN ![VXLAN](./VXLAN.png)
+    >
+    > k8s 网络插件 Flannel ![Flannel](./Flannel.png)
+- Underlay
+    > 使用现有底层网络，为每个容器配置可路由的网络 ip
